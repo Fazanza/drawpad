@@ -1,0 +1,38 @@
+body {
+    position: relative;
+}
+
+#container {
+    margin: auto;
+    margin-top: 200px;
+    width: 800px;
+    height: 500px;
+    font-size: 0px; /* gets rid of spaces(no idea how this works) */
+}
+
+
+.square {
+    display: inline-block;
+    border: thin solid black;
+    box-sizing: border-box; /* adds padding and margin into the width/height */ 
+}
+
+.buttons {
+    position: absolute;
+    bottom: 540px;
+}
+
+#buttonReset {
+    left: 725px;
+}
+
+#buttonChange {
+    left: 1000px;
+}
+
+.buttons .info {
+    width: 125px;
+    height: 50px;
+    border-radius: 3px;
+    font-size: 14px;
+}

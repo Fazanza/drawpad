@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link rel="stylesheet" type = "text/css" href="style.css">
+        <title>
+            DrawPad
+        </title>
+    </head>
+    <body>
+        <div id="container">
+        </div>
+        <div class = 'buttons' id = "buttonReset">
+        </div>
+        <div class = 'buttons' id = "buttonChange">
+        </div>
+    </body>
+
+    <script>
+        const container = document.querySelector('#container');
+        const btnReset = document.querySelector('#buttonReset');
+        const btnChange = document.querySelector('#buttonChange');
+
+        function createGrid(gridAmount) {
+            for (i = 0; i < gridAmount; i++) {
+                const row = document.createElement('div');
+                container.appendChild(row);
+
+                for (j = 0; j < gridAmount; j++) {
+                const square = document.createElement('div');
+                square.setAttribute('id', 'innerSquare');
+                square.style.width = `${800/gridAmount}px`;
+                square.style.height = `${500/gridAmount}px`;
+                square.classList.add("square");
+                row.appendChild(square);
+                }
+            }
+        }
+
+        function createButton() {
+            let btnClear = document.createElement("button");
+            btnClear.textContent = "Reset";
+            btnClear.classList.add("info");
+            btnReset.appendChild(btnClear);
+
+            let btnChange = document.createElement("button");
+            btnChange.textContent = "Change Color";
+            btnChange.classList.add("info");
+            buttonChange.appendChild(btnChange);
+        }
+
+        buttonReset.addEventListener("click", refresh);
+            function refresh() {
+                let userInput = confirm("Are you sure you want to reset the grid?");
+                if (userInput == true) 
+                    location.reload();
+            }
+
+        buttonChange.addEventListener("click", changeColor);
+            function changeColor() {
+                
+            }
+
+        container.addEventListener("click", setBackground);
+            function setBackground(event) {
+                let square = event.target.document.querySelector('#innerSquare');
+                square.style.backgroundColor = `Black`;
+            }
+            
+        function getSize() {
+            gridAmount = prompt("Enter a grid amount: ", 16); //the 16 is the default if no input is added
+            createGrid(gridAmount);
+        }
+       
+       getSize();
+       createButton();
+
+    </script>
+</html>
